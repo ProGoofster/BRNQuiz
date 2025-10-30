@@ -1,12 +1,16 @@
 package com.exam.brnquiz;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Random;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -22,6 +26,15 @@ public class IntroActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Random rnd = new Random();
+        Button btn = findViewById(R.id.button);
+        btn.setBackgroundColor(rnd.nextInt());
+
+        btn.setOnClickListener(v -> {
+            Intent intent = new Intent(IntroActivity.this, QuizActivity.class);
+            startActivity(intent);
         });
     }
 }
